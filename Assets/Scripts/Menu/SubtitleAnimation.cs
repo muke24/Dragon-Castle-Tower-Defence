@@ -1,43 +1,47 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SubtitleAnimation : MonoBehaviour
 {
-    public GameObject mainMenuSubtitle;
-    public GameObject menu;
-    public GameObject settings;
+	public float Speed = 30f;
+	public bool mainMenuEnabled;
+	public bool settingsEnabled;
 
-    public bool optionsEnabled;
+	private Transform target;
+	private int wavepointIndex = 0;
 
-    public Animator subtitleAnimation;
-    public AnimatorControllerParameter subtitleStopped;
-
-    // Start is called before the first frame update
-    void Start()
+	// Start is called before the first frame update
+	void Start()
     {
-        optionsEnabled = false;
-    }
+		target = Waypoints.points[0];
+
+		mainMenuEnabled = true;
+		settingsEnabled = false;
+	}
 
     // Update is called once per frame
     void Update()
     {
-        if (menu.activeInHierarchy == true)
-        {
-            optionsEnabled = false;
-        }
+		Vector3 dir = target.position - transform.position;
+		transform.Translate(dir.normalized * Speed * Time.deltaTime, Space.World);
 
-        if (settings.activeInHierarchy == true)
-        {
-            optionsEnabled = true;
-        }
+		if (mainMenuEnabled == true && Vector3.Distance(transform.position, target.position) <= 0.2f)
+		{
+			GetNextWaypoint();
+		}
 
-        if (optionsEnabled == true)
-        {
-            mainMenuSubtitle.
-        }
+	}
 
-    }
+	void GetNextWaypoint()
+	{
+		if (wavepointIndex >= Waypoints.points.Length - 1)
+		{
+			Destroy(gameObject);
+			return;
+		}
 
+		wavepointIndex++;
+		target = Waypoints.points[wavepointIndex];
+	}
 }
