@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-public class Item
+public class Tower
 {
     #region Variables
     //id of the item for programmers and developers
@@ -7,15 +7,21 @@ public class Item
     //Desplay name and description for players
     private string _name;
     private string _description;    
-    //Buy and Sell value
+    //Cost of Tower to build
     private int _value;
+
     //Basic Stats
     private int _damage;    
-    //Display Icon and Mesh
+    //Display menu icon and 3d Mesh
     private Texture2D _iconName;
     private GameObject _meshName;
-    //Type of item...for item use
-    private ItemTypes _type;
+    //Type of tower
+    private TowerTypes _type;
+
+    //Upgrade values
+    private int _upCostPercent;  // the percentage cost the tower increases each level
+    private int _upDmgPercent;  // the percentage damage increases each upgrade level
+
     #endregion
     #region Properties
     public int ID
@@ -45,7 +51,19 @@ public class Item
         get { return _damage; }
         set { _damage = value; }
     }
-    
+
+    public int UpgradeCostPercent
+    {
+        get { return _upCostPercent; }
+        set { _upCostPercent = value; }
+    }
+
+    public int UpgradeDmgPercent
+    {
+        get { return _upDmgPercent; }
+        set { _upDmgPercent = value; }
+    }
+
     public Texture2D IconName
     {
         get { return _iconName; }
@@ -56,22 +74,17 @@ public class Item
         get { return _meshName; }
         set { _meshName = value; }
     }
-    public ItemTypes ItemType
+    public TowerTypes ItemType
     {
         get { return _type; }
         set { _type = value; }
     }
     #endregion
 }
-public enum ItemTypes
+public enum TowerTypes
 {
-    Armour,
-    Weapon,
-    Potion,
-    Money,
-    Quest,
-    Food,
-    Ingredient,
-    Craftable,
-    Misc
+    Red,
+    Blue,
+    Green,
+    Black
 }
