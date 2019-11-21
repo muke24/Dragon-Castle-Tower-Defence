@@ -10,8 +10,8 @@ public class SetResolution : MonoBehaviour
 	[Header("Screen Properties")]
 	[Space]
 
-	[SerializeField] private int screenWidth;
-	[SerializeField] private int screenHeight;
+	[SerializeField] private float screenWidth;
+	[SerializeField] private float screenHeight;
 	[SerializeField] private bool isFullScreen;
 
 	#endregion
@@ -20,8 +20,9 @@ public class SetResolution : MonoBehaviour
 	public Button fllScrnBtn;
 	public Button applyBtn;
 	public Slider resSlider;
-	public int resInt;
-	public int resTxtInt;
+	public float resSliderFloat;
+	public float resWidthFloat;
+	public float resHeightFloat;
 
 	// Unity Functions
 	private void Awake()
@@ -52,7 +53,7 @@ public class SetResolution : MonoBehaviour
 
 		// Sets the resolution of game.
 		isFullScreen = true;
-		Screen.SetResolution(screenWidth/resInt, screenHeight/resInt, isFullScreen);
+		(int)((float)Screen.SetResolution(screenWidth/ resSliderFloat, screenHeight / resSliderFloat, isFullScreen);
 
 	}
 
@@ -60,15 +61,18 @@ public class SetResolution : MonoBehaviour
 	{
 		// Show the resolution.
 		//resTxt.text = Screen.width.ToString() + " x " + Screen.height.ToString();
-		resTxt.text = Screen.width.ToString() + " x " + Screen.height.ToString();
 
-		int.TryParse(resTxt.text, out resTxtInt);
+		float.TryParse(resTxt.text, out resWidthFloat);
 
 		fllScrnBtn.onClick.AddListener(TaskOnClick);
 		applyBtn.onClick.AddListener(TaskOnClickApply);
 
-		resInt = (int)resSlider.value;
+		resSliderFloat = resSlider.value;
 
+		resWidthFloat = (int)((float)Screen.currentResolution.width / resSliderFloat);
+		resHeightFloat = (int)((float)Screen.currentResolution.height / resSliderFloat);
+
+		resTxt.text = resWidthFloat.ToString() + " x " + resHeightFloat.ToString();
 	}
 
 	public void TaskOnClick()
@@ -96,6 +100,7 @@ public class SetResolution : MonoBehaviour
 	}
 	public void TaskOnClickApply()
 	{
-		Screen.SetResolution(screenWidth / resInt, screenHeight / resInt, isFullScreen);
+		Screen.SetResolution(screenWidth / resSliderFloat, screenHeight / resSliderFloat, isFullScreen));
+
 	}
 }
