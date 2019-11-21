@@ -11,12 +11,12 @@ public class SetGraphics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        resolutionText = resolution.ToString;
+        resolutionText.text = resolution.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Screen.SetResolution
+        //Screen.SetResolution
     }
 }

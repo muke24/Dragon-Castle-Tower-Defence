@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
+
     private Transform target;
     public float range = 15f;
-
     public string enemyTag = "Enemy";
-
     public Transform partToRotate;
     public float turnspeed = 10f;
-
     public float fireRate = 1f;
     private float fireCountDown = 0f;
+
+
 
     // Start is called before the first frame update
     void Start()
