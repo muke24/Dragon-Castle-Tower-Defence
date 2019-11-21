@@ -2447,6 +2447,7 @@ MonoBehaviour:
   applyBtn: {fileID: 1304926053}
   resSlider: {fileID: 1279277124}
   resInt: 1
+  resTxtInt: 0
 --- !u!1 &988946182
 GameObject:
   m_ObjectHideFlags: 0
@@ -3044,10 +3045,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 344514274}
   m_HandleRect: {fileID: 373981224}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
-  m_Value: 1
+  m_MinValue: 1
+  m_MaxValue: 4
+  m_WholeNumbers: 1
+  m_Value: 4
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
