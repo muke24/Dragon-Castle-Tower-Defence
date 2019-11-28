@@ -53,7 +53,7 @@ public class SetResolution : MonoBehaviour
 
 		// Sets the resolution of game.
 		isFullScreen = true;
-		(int)((float)Screen.SetResolution(screenWidth/ resSliderFloat, screenHeight / resSliderFloat, isFullScreen);
+		//(int)((float)Screen.SetResolution(screenWidth / resSliderFloat, screenHeight / resSliderFloat, isFullScreen);
 
 	}
 
@@ -100,7 +100,7 @@ public class SetResolution : MonoBehaviour
 	}
 	public void TaskOnClickApply()
 	{
-		Screen.SetResolution(screenWidth / resSliderFloat, screenHeight / resSliderFloat, isFullScreen));
+		//Screen.SetResolution(screenWidth / resSliderFloat, screenHeight / resSliderFloat, isFullScreen));
 
 	}
 }

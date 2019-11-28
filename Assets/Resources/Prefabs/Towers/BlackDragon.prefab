@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 573548161401798413}
   - component: {fileID: 493910493920407505}
   m_Layer: 0
-  m_Name: Turret
+  m_Name: BlackDragon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 493910493920407504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 2, z: 5}
+  m_LocalPosition: {x: 8.443726, y: 7.5479736, z: -10.618042}
   m_LocalScale: {x: 0.5, y: 1, z: 0.5}
   m_Children:
   - {fileID: 8746582955921813368}
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a217b710a2bda9047b51ab5ba72dc587, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,6 +108,8 @@ MonoBehaviour:
   range: 5
   enemyTag: Enemy
   partToRotate: {fileID: 4468679556093788517}
+  turnspeed: 10
+  fireRate: 1
 --- !u!1 &2857837851226828598
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,7 +168,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a217b710a2bda9047b51ab5ba72dc587, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -274,6 +274,9 @@ GameObject:
   m_Component:
   - component: {fileID: 72893587}
   - component: {fileID: 72893586}
+  - component: {fileID: 72893588}
+  - component: {fileID: 72893589}
+  - component: {fileID: 72893590}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -312,6 +315,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &72893588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72893585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9391f8205d448c04299b95450a2c531e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempObject: {fileID: 4468679556093788517, guid: bc1fba899b3450047b2f2d461a1757a4,
+    type: 3}
+--- !u!114 &72893589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72893585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ae51a9360f3f84caa81385020a81f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &72893590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72893585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a60f13c30688a8a4fa1e506eabf66a83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curPlayerLife: 100
+  maxPlayerLife: 100
 --- !u!1 &84576090
 GameObject:
   m_ObjectHideFlags: 0
@@ -3936,7 +3979,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -449.59998, y: -263.90002}
+  m_AnchoredPosition: {x: -449.59998, y: -263.9}
   m_SizeDelta: {x: -899.1, y: -527.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &785562376
@@ -6826,7 +6869,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 5ae7f76fc89935d41b2c3012a82aa5a5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

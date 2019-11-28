@@ -22,6 +22,8 @@ public class Tower
     private int _upCostPercent;  // the percentage cost the tower increases each level
     private int _upDmgPercent;  // the percentage damage increases each upgrade level
 
+
+    //make the variables accessible
     #endregion
     #region Properties
     public int ID
@@ -81,6 +83,8 @@ public class Tower
     }
     #endregion
 }
+
+// list of tower types
 public enum TowerTypes
 {
     Red,
