@@ -327,6 +327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9391f8205d448c04299b95450a2c531e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distance: 25
   tempObject: {fileID: 4468679556093788517, guid: bc1fba899b3450047b2f2d461a1757a4,
     type: 3}
 --- !u!114 &72893589
@@ -2109,7 +2110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &382365900
 Transform:
   m_ObjectHideFlags: 0
