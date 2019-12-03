@@ -1,78 +1,101 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TowerManager : MonoBehaviour
 {
     public float distance = 25f;
 
-    Vector3 mousePosition, targetPosition;
+    //public Tower[] towers = new Tower[] { TowerData.CreateTower(0), TowerData.CreateTower(1), TowerData.CreateTower(2), TowerData.CreateTower(3) };
 
     //Used to instantiate an object at mouse position
-    public Transform tempObject;
-    private GameObject linehandler;
+    //public Transform tempObject;
+
+    
+
+    public GameObject toggleGroup;
+    private Toggle[] towerSelections;
+    private Tower selectedTower;
+
+
+    private void Start()
+    {
+        towerSelections = toggleGroup.GetComponentsInChildren<Toggle>();
+    }
+
+
+    /*
+     * Function to expand on automation by creating buttons dynamically
+     * 
+    void MakeTowerSelectorButtons()
+    {
+        for (int i = 0; i < towers.Length - 1; i++)
+        {
+
+        }
+    }*/
+
 
     void Update()
     {
         if (Input.GetMouseButtonUp(0))
         {
             // place a tower at mouse point
-            PlaceTower2(UnityEngine.Random.Range(0, 4));
-            //PlaceTower(UnityEngine.Random.Range(0, 3));
-            //PlaceTower1(UnityEngine.Random.Range(0, 3));
+            PlaceTower(selectedTower);
+
+            //Debug.Log("Left mouse clicked");
         }
     }
 
     
-
-    void PlaceTower(int typeId)
+    public void SetSelectedTower()
     {
-        
-        // get the current mouse position
-        mousePosition = Input.mousePosition;
+        Debug.Log("SetSelectedTower");
+        for (int i = 0; i < towerSelections.Length; i++)
+        {
+            Debug.Log("Checking Towers");
+            if (towerSelections[i].isOn)
+            {
+                selectedTower = TowerData.CreateTower(i);
+                Debug.Log("Tower " + i + " Selected");
+            }
+        }
+    }
 
-        // convert the mousePosition to in game 'world' position
-        targetPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, distance));
+    void setSelectedTowerType(string type)
+    {
 
-        //create a new tower of typeId
-        Tower newTower = TowerData.CreateTower(typeId);
+    }
 
-        //Set the position of targetObject
-        tempObject.transform.position = targetPosition;
-
-        //Place the tower
-        Instantiate(newTower.MeshName, tempObject.position, tempObject.transform.rotation);
-
+    void setSelectedTowerType(int type)
+    {
 
     }
 
 
-    void PlaceTower1(int typeId)
-    {
-        //create a new tower of typeId
-        Tower newTower = TowerData.CreateTower(typeId);
-        Ray rayCast = Camera.main.ScreenPointToRay(Input.mousePosition);
-        linehandler = Instantiate(newTower.MeshName, rayCast.GetPoint(10), Quaternion.identity) as GameObject;
-        
-    }
 
-    void PlaceTower2(int typeId)
+    //Function to place a Tower at the place the mouse hits using a ray cast and checking to make sure the thing it hits is a placeble area
+    void PlaceTower(Tower newTower)
     {
         
         Debug.Log("Left mouse clicked");
-        RaycastHit hit;
+        // raycast to hold click point
+        RaycastHit click;
+        // creat a ray to mouse point
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Tower newTower = TowerData.CreateTower(typeId);
-
-        if (Physics.Raycast(ray, out hit))
+                
+        ///initiate and get resuts or ray
+        if (Physics.Raycast(ray, out click))
         {
-            if (hit.transform.parent.name == "Maze_1")
+            //if the click was on the maze
+            if (click.transform.parent.name == "Maze_1")
             {
-                hit.point.Set(hit.point.x, hit.point.y + 10f, hit.point.z);
+                // move the position up
+                click.point.Set(click.point.x, click.point.y + distance, click.point.z);
+                
+                Instantiate(newTower.MeshName, click.point, Quaternion.identity);
 
-                Instantiate(newTower.MeshName, hit.point, Quaternion.identity);
-
-                print("My object is clicked by mouse");
             }
         }
         

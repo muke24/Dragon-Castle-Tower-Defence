@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHandler : MonoBehaviour
 {
@@ -9,12 +10,33 @@ public class PlayerHandler : MonoBehaviour
     //Make it so this script is accessible anywhere in the scene 
     #endregion
 
-    public int curPlayerLife = 100;
-    public int maxPlayerLife = 100;
+    public int playerLife = 100;
+    public int playerGold = 100;
+
+    public Text txtGold;
+    public Text txtLife;
 
     void Start()
     {
         Instance = this;
     }
-    
+
+    private void Update()
+    {
+        txtGold.text = "$" + playerGold.ToString();
+        txtLife.text = "LIFE: " + playerLife.ToString();
+
+        if (playerLife <= 0)
+        {
+            //Save score
+            //Death
+        }
+    }
+
+    public void TakeDamage(int dmgAmount)
+    {
+        Debug.Log("Lose Life " + dmgAmount);
+        playerLife -= dmgAmount;
+    }
+
 }
