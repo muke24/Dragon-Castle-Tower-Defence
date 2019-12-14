@@ -13,6 +13,7 @@ public static class TowerData
         string meshName = "";
         int upgradeDmgPercent = 0;
         int upgradeCostPercent = 0;
+        float fireRate = 0;
         TowerTypes type = TowerTypes.Red;
 
         switch(itemId)
@@ -20,44 +21,48 @@ public static class TowerData
             case 0:
                 name = "Red Dragon";
                 description = "A Red Dragon that Breaths Fire";                
-                value = 50;
+                value = 25;
                 damage = 1;                
                 iconName = "Towers/RedDragonIcon";
                 meshName = "Towers/RedDragon";                
                 type = TowerTypes.Red;
                 upgradeDmgPercent = 1;
                 upgradeCostPercent = 1;
+                fireRate = 5;
                 break;
             case 1:
                 name = "Blue Dragon";
                 description = "A blue Frost Dragon that Breaths Ice";
-                value = 60;
-                damage = 0;
+                value = 40;
+                damage = 5;
                 iconName = "Towers/BlueDragonIcon";
                 meshName = "Towers/BlueDragon";
                 type = TowerTypes.Blue;
                 upgradeDmgPercent = 1;
                 upgradeCostPercent = 1;
+                fireRate = 2;
                 break;
             case 2:
                 name = "Green Dragon";
-                description = "A Green Dragon that Breaths Poison";
+                description = "A Green Dragon that Breaths Acid";
                 value = 70;
-                damage = 0;
+                damage = 15;
                 iconName = "Towers/GreenDragonIcon";
                 meshName = "Towers/GreenDragon";
                 upgradeDmgPercent = 1;
                 upgradeCostPercent = 1;
+                fireRate = 1;
                 break;
             case 3:
                 name = "Black Dragon";
                 description = "A Black Dragon that Shoots Lasers!!!";
                 value = 100;
-                damage = 0;
+                damage = 30;
                 iconName = "Towers/BlackDragonIcon";
                 meshName = "Towers/BlackDragon";
                 upgradeDmgPercent = 1;
                 upgradeCostPercent = 1;
+                fireRate = 0.7f;
                 break;
         }
 
@@ -72,8 +77,8 @@ public static class TowerData
             MeshName = Resources.Load("Prefabs/" + meshName) as GameObject,
             ItemType = type,
             UpgradeCostPercent = upgradeCostPercent,
-            UpgradeDmgPercent = upgradeDmgPercent
-
+            UpgradeDmgPercent = upgradeDmgPercent,
+            FireRate = fireRate
         };
 
         return temp;

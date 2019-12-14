@@ -12,8 +12,8 @@ public class BaseTower : MonoBehaviour
     public float turnspeed = 10f;
     public float fireRate = 1f;
     private float fireCountDown = 0f;
-
-
+    public int damage = 20;
+    //GameObject nearestEnemy = null;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +26,7 @@ public class BaseTower : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
+
         foreach (GameObject enemy in enemies)
         {
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
@@ -71,7 +72,9 @@ public class BaseTower : MonoBehaviour
 
     void Shoot()
     {
-        Debug.Log("SHOOT");
+        //Debug.Log("SHOOT");
+        target.GetComponent<Enemy>().currentHealth -= damage;
+        target.GetComponent<MeshRenderer>().material.color = new Color(255, (target.GetComponent<Enemy>().currentHealth * 2.5f) * 0.01f, (target.GetComponent<Enemy>().currentHealth * 2.5f) * 0.01f, 0);
     }
 
     private void OnDrawGizmosSelected()

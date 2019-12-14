@@ -16,18 +16,17 @@ public class TowerManager : MonoBehaviour
 
     public GameObject toggleGroup;
     private Toggle[] towerSelections;
-    private Tower selectedTower;
+    private Tower selectedTower = null;
 
 
     private void Start()
     {
         towerSelections = toggleGroup.GetComponentsInChildren<Toggle>();
     }
-
-
+    
     /*
      * Function to expand on automation by creating buttons dynamically
-     * 
+     * If I forget to sort this out see BaseTower.cs for array usage
     void MakeTowerSelectorButtons()
     {
         for (int i = 0; i < towers.Length - 1; i++)
@@ -39,40 +38,29 @@ public class TowerManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonUp(0))
+        // if player has selected a tower type
+        if (selectedTower != null)
         {
-            // place a tower at mouse point
-            PlaceTower(selectedTower);
-
-            //Debug.Log("Left mouse clicked");
-        }
+            // if mouse button clicked and player has the gold for selected tower
+            if (Input.GetMouseButtonUp(0) && PlayerHandler.playerGold >= selectedTower.Value)
+            {
+                // place a tower at mouse point
+                PlaceTower(selectedTower);
+            }
+        }        
     }
 
     
     public void SetSelectedTower()
     {
-        Debug.Log("SetSelectedTower");
         for (int i = 0; i < towerSelections.Length; i++)
         {
-            Debug.Log("Checking Towers");
             if (towerSelections[i].isOn)
             {
                 selectedTower = TowerData.CreateTower(i);
-                Debug.Log("Tower " + i + " Selected");
             }
         }
-    }
-
-    void setSelectedTowerType(string type)
-    {
-
-    }
-
-    void setSelectedTowerType(int type)
-    {
-
-    }
-
+    }    
 
 
     //Function to place a Tower at the place the mouse hits using a ray cast and checking to make sure the thing it hits is a placeble area
@@ -94,8 +82,18 @@ public class TowerManager : MonoBehaviour
                 // move the position up
                 click.point.Set(click.point.x, click.point.y + distance, click.point.z);
                 
-                Instantiate(newTower.MeshName, click.point, Quaternion.identity);
+                // Create tower at click point
+                GameObject tower = Instantiate(newTower.MeshName, click.point, Quaternion.identity);
+                // get the baseTower script from the new tower
+                BaseTower baseTower = tower.GetComponent<BaseTower>();
 
+                // set fire rate depending on selected tower
+                baseTower.fireRate = selectedTower.FireRate;
+                // set damage of selected tower
+                baseTower.damage = selectedTower.Damage;
+
+                //reduce player's gold by the cost of the tower
+                PlayerHandler.playerGold -= selectedTower.Value;
             }
         }
         

@@ -22,6 +22,8 @@ public class Tower
     private int _upCostPercent;  // the percentage cost the tower increases each level
     private int _upDmgPercent;  // the percentage damage increases each upgrade level
 
+    //fire rate of the Tower
+    private float _fireRate;
 
     //make the variables accessible
     #endregion
@@ -64,6 +66,12 @@ public class Tower
     {
         get { return _upDmgPercent; }
         set { _upDmgPercent = value; }
+    }
+
+    public float FireRate
+    {
+        get { return _fireRate; }
+        set { _fireRate = value; }
     }
 
     public Texture2D IconName

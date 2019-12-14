@@ -10,8 +10,8 @@ public class PlayerHandler : MonoBehaviour
     //Make it so this script is accessible anywhere in the scene 
     #endregion
 
-    public int playerLife = 100;
-    public int playerGold = 100;
+    public static int playerLife = 100;
+    public static int playerGold = 100;
 
     public Text txtGold;
     public Text txtLife;
@@ -38,5 +38,7 @@ public class PlayerHandler : MonoBehaviour
         Debug.Log("Lose Life " + dmgAmount);
         playerLife -= dmgAmount;
     }
+
+
 
 }

@@ -7,14 +7,14 @@ public class TriggerEvent : MonoBehaviour
 {
     public UnityEvent onEnter, OnStay, onExit; //Unity events for entering, staying and exiting 
     public UnityEvent onInteract; //Unity event for when interacting with an object;
-    public string hitTag = "Player"; //hitTag for checking that the player has triggered the event
+    public string hitTag = "Enemy"; //hitTag for checking that the desired object has triggered the event
 
     public void Interact()
     {
         //When void in run invoke all callbacks on interact
         onInteract.Invoke();
     }
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter(Collider col)
     {
         //If player enters the trigger invoke all callbacks onEnter
         if (col.CompareTag(hitTag))
@@ -23,7 +23,7 @@ public class TriggerEvent : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay(Collider collision)
     {
         //If player stays within the trigger invoke all callbacks onStay
         if (collision.CompareTag(hitTag))
@@ -32,10 +32,12 @@ public class TriggerEvent : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit(Collider collision)
     {
         //On trigger exit, Invoke All Callbacks on onExit
         onExit.Invoke();
     }
+
+    
 }
 
