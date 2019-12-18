@@ -33,6 +33,8 @@ public class Enemy : MonoBehaviour
             Destroy(this.gameObject);
             // add gold to player
             PlayerHandler.playerGold += goldValue;
+            // add score to player
+            PlayerHandler.playerScore += 1;
         }
     }
 

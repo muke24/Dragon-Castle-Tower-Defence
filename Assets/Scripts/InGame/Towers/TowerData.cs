@@ -14,6 +14,7 @@ public static class TowerData
         int upgradeDmgPercent = 0;
         int upgradeCostPercent = 0;
         float fireRate = 0;
+        float range = 10f;
         TowerTypes type = TowerTypes.Red;
 
         switch(itemId)
@@ -22,13 +23,14 @@ public static class TowerData
                 name = "Red Dragon";
                 description = "A Red Dragon that Breaths Fire";                
                 value = 25;
-                damage = 1;                
+                damage = 2;                
                 iconName = "Towers/RedDragonIcon";
                 meshName = "Towers/RedDragon";                
                 type = TowerTypes.Red;
                 upgradeDmgPercent = 1;
                 upgradeCostPercent = 1;
-                fireRate = 5;
+                fireRate = 4;
+                range = 15f;
                 break;
             case 1:
                 name = "Blue Dragon";
@@ -41,6 +43,7 @@ public static class TowerData
                 upgradeDmgPercent = 1;
                 upgradeCostPercent = 1;
                 fireRate = 2;
+                range = 12f;
                 break;
             case 2:
                 name = "Green Dragon";
@@ -51,18 +54,20 @@ public static class TowerData
                 meshName = "Towers/GreenDragon";
                 upgradeDmgPercent = 1;
                 upgradeCostPercent = 1;
-                fireRate = 1;
+                fireRate = 0.9f;
+                range = 10f;
                 break;
             case 3:
                 name = "Black Dragon";
                 description = "A Black Dragon that Shoots Lasers!!!";
-                value = 100;
+                value = 150;
                 damage = 30;
                 iconName = "Towers/BlackDragonIcon";
                 meshName = "Towers/BlackDragon";
                 upgradeDmgPercent = 1;
                 upgradeCostPercent = 1;
                 fireRate = 0.7f;
+                range = 20f;
                 break;
         }
 

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<HighScores xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <HighScores>
+    <ScoreEntry>
+      <playerName>Bananaman</playerName>
+      <score>8</score>
+      <timeAlive>176.736145</timeAlive>
+    </ScoreEntry>
+    <ScoreEntry>
+      <playerName>Dude</playerName>
+      <score>0</score>
+      <timeAlive>169.759109</timeAlive>
+    </ScoreEntry>
+  </HighScores>
+</HighScores>

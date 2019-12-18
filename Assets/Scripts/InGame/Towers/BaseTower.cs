@@ -6,7 +6,7 @@ public class BaseTower : MonoBehaviour
 {
 
     private Transform target;
-    public float range = 15f;
+    public float range = 10f;
     public string enemyTag = "Enemy";
     public Transform partToRotate;
     public float turnspeed = 10f;
@@ -23,10 +23,12 @@ public class BaseTower : MonoBehaviour
 
     void UpdateTarget()
     {
+
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
 
+        // loop through enemies to find the closest one
         foreach (GameObject enemy in enemies)
         {
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);

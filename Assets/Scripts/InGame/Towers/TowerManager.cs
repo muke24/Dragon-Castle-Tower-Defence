@@ -5,14 +5,6 @@ using UnityEngine.UI;
 
 public class TowerManager : MonoBehaviour
 {
-    public float distance = 25f;
-
-    //public Tower[] towers = new Tower[] { TowerData.CreateTower(0), TowerData.CreateTower(1), TowerData.CreateTower(2), TowerData.CreateTower(3) };
-
-    //Used to instantiate an object at mouse position
-    //public Transform tempObject;
-
-    
 
     public GameObject toggleGroup;
     private Toggle[] towerSelections;
@@ -21,20 +13,11 @@ public class TowerManager : MonoBehaviour
 
     private void Start()
     {
+        //get tower select buttons within toggle group
         towerSelections = toggleGroup.GetComponentsInChildren<Toggle>();
     }
     
-    /*
-     * Function to expand on automation by creating buttons dynamically
-     * If I forget to sort this out see BaseTower.cs for array usage
-    void MakeTowerSelectorButtons()
-    {
-        for (int i = 0; i < towers.Length - 1; i++)
-        {
-
-        }
-    }*/
-
+    
 
     void Update()
     {
@@ -50,13 +33,16 @@ public class TowerManager : MonoBehaviour
         }        
     }
 
-    
+    // select tower
     public void SetSelectedTower()
     {
+        // iterat through the tower selections array
         for (int i = 0; i < towerSelections.Length; i++)
         {
+            // if toggle is selected
             if (towerSelections[i].isOn)
             {
+                //set selected tower
                 selectedTower = TowerData.CreateTower(i);
             }
         }
@@ -67,7 +53,8 @@ public class TowerManager : MonoBehaviour
     void PlaceTower(Tower newTower)
     {
         
-        Debug.Log("Left mouse clicked");
+        //Debug.Log("Left mouse clicked");
+
         // raycast to hold click point
         RaycastHit click;
         // creat a ray to mouse point
@@ -80,17 +67,20 @@ public class TowerManager : MonoBehaviour
             if (click.transform.parent.name == "Maze_1")
             {
                 // move the position up
-                click.point.Set(click.point.x, click.point.y + distance, click.point.z);
+                //click.point.Set(click.point.x, click.point.y, click.point.z);
                 
                 // Create tower at click point
                 GameObject tower = Instantiate(newTower.MeshName, click.point, Quaternion.identity);
-                // get the baseTower script from the new tower
+                
+                // get the baseTower script from the new tower to set its attributes
                 BaseTower baseTower = tower.GetComponent<BaseTower>();
 
                 // set fire rate depending on selected tower
                 baseTower.fireRate = selectedTower.FireRate;
+                
                 // set damage of selected tower
                 baseTower.damage = selectedTower.Damage;
+                
 
                 //reduce player's gold by the cost of the tower
                 PlayerHandler.playerGold -= selectedTower.Value;
