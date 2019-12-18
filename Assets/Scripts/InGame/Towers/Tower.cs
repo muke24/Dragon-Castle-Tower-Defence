@@ -25,6 +25,8 @@ public class Tower
     //fire rate of the Tower
     private float _fireRate;
 
+    private float _range;
+
     //make the variables accessible
     #endregion
     #region Properties
@@ -72,6 +74,12 @@ public class Tower
     {
         get { return _fireRate; }
         set { _fireRate = value; }
+    }
+
+    public float Range
+    {
+        get { return _range; }
+        set { _range = value; }
     }
 
     public Texture2D IconName

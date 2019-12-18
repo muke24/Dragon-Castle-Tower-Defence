@@ -80,7 +80,9 @@ public class TowerManager : MonoBehaviour
                 
                 // set damage of selected tower
                 baseTower.damage = selectedTower.Damage;
-                
+
+                //set the fireing range of the tower
+                baseTower.range = selectedTower.Range;
 
                 //reduce player's gold by the cost of the tower
                 PlayerHandler.playerGold -= selectedTower.Value;

@@ -83,7 +83,8 @@ public static class TowerData
             ItemType = type,
             UpgradeCostPercent = upgradeCostPercent,
             UpgradeDmgPercent = upgradeDmgPercent,
-            FireRate = fireRate
+            FireRate = fireRate,
+            Range = range
         };
 
         return temp;
